@@ -1,0 +1,13 @@
+{
+  "name": "abee-event-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "workspaces": [
+    "packages/*",
+    "testbed/*",
+    "library/*"
+  ],
+  "author": "",
+  "license": "ISC"
+}

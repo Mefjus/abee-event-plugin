@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState, type ReactNode } from 'react';
 import { ConfigurationManager } from '@mefjus/core';
 import { HardwareCollector } from '../collectors/HardwareCollector';
 
@@ -7,17 +7,13 @@ export interface BehavioralContextProps {
   debug: string;
 }
 
-export const BehavioralContext = React.createContext<BehavioralContextProps>({
+export const BehavioralContext = createContext<BehavioralContextProps>({
   initialize: () => {},
   debug: 'none',
 });
 
-export const BehavioralProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [debug, setDebug] = React.useState('none');
+export const BehavioralProvider = ({ children }: { children: ReactNode }) => {
+  const [debug, setDebug] = useState('none');
 
   const initialize: BehavioralContextProps['initialize'] = (userId) => {
     const config = new ConfigurationManager(userId);

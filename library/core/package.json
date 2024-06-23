@@ -2,7 +2,7 @@
   "name": "@mefjus/core",
   "version": "1.0.0",
   "description": "core",
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": [
       "./src/index.ts"

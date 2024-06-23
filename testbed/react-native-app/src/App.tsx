@@ -1,7 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { StyleSheet, View, Text } from "react-native";
 import { BehavioralProvider, BehavioralContext } from "react-native-behavioral";
+
+export default function App() {
+  return (
+    <BehavioralProvider>
+      <View style={styles.container}>
+        <Test />
+      </View>
+    </BehavioralProvider>
+  );
+}
 
 const Test = () => {
   const { initialize, debug } = useContext(BehavioralContext);
@@ -12,18 +22,6 @@ const Test = () => {
 
   return <Text>{debug}</Text>;
 };
-
-export default function App() {
-  return (
-    <BehavioralProvider>
-      <View style={styles.container}>
-        <Text></Text>
-        <Text></Text>
-        <Test />
-      </View>
-    </BehavioralProvider>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {

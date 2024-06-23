@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "workspaces": [
-    "packages/*",
-    "testbed/*",
-    "library/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "testbed/*",
+      "library/*"
+    ],
+    "nohoist": [
+      "**/react-native-app",
+      "**/react-native-app/**"
+    ]
+  },
   "author": "",
   "license": "ISC"
 }

@@ -5,20 +5,22 @@ import dts from 'rollup-plugin-dts';
 import terser from '@rollup/plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import babel from '@rollup/plugin-babel';
+import { defineConfig } from 'rollup';
 
 const packageJson = require('./package.json');
 
 export default [
-  {
+  defineConfig({
     input: ['src/index.tsx'],
     output: [
       {
         file: `${packageJson.main}.js`,
         format: 'cjs',
         sourcemap: true,
+        name: 'react-native-behavioral',
       },
       {
-        file: `${packageJson.module}.mjs`,
+        file: `${packageJson.module}.js`,
         format: 'esm',
         exports: 'named',
         sourcemap: true,
@@ -29,20 +31,15 @@ export default [
       typescript({ tsconfig: './tsconfig.json' }),
       resolve(),
       commonjs(),
-      babel({
-        babelHelpers: 'bundled',
-        exclude: 'node_modules/**',
-        presets: [['@babel/preset-react', { runtime: 'automatic' }]],
-        extensions: ['.ts', '.tsx'],
-      }),
       terser(),
+      babel({ babelHelpers: 'bundled', configFile: './babel.config.js' }),
     ],
     external: ['react', 'react-dom', 'react-native'],
-  },
-  {
+  }),
+  defineConfig({
     input: 'src/index.tsx',
-    output: [{ file: 'dist/types.d.ts', format: 'es', sourcemap: true }],
+    output: [{ file: 'dist/index.d.ts', format: 'es', sourcemap: true }],
     plugins: [dts.default()],
     external: [/\.css$/],
-  },
+  }),
 ];

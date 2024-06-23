@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "paths": {
-      // "react-native-behavioral": ["./src/index"]
-    },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,

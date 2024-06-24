@@ -1,6 +1,12 @@
-import React, { createContext, useState, type ReactNode } from 'react';
+import React, {
+  createContext,
+  useState,
+  type FC,
+  type PropsWithChildren,
+} from 'react';
 import { ConfigurationManager } from '@mefjus/core';
 import { HardwareCollector } from '../collectors/HardwareCollector';
+import { FingerprintJsProProvider } from '@fingerprintjs/fingerprintjs-pro-react-native';
 
 export interface BehavioralContextProps {
   initialize: (userId: string) => void;
@@ -12,7 +18,7 @@ export const BehavioralContext = createContext<BehavioralContextProps>({
   debug: 'none',
 });
 
-export const BehavioralProvider = ({ children }: { children: ReactNode }) => {
+export const BehavioralProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const [debug, setDebug] = useState('none');
 
   const initialize: BehavioralContextProps['initialize'] = (userId) => {
@@ -28,7 +34,9 @@ export const BehavioralProvider = ({ children }: { children: ReactNode }) => {
         debug,
       }}
     >
-      {children}
+      <FingerprintJsProProvider apiKey="test">
+        {children}
+      </FingerprintJsProProvider>
     </BehavioralContext.Provider>
   );
 };

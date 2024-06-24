@@ -32,7 +32,7 @@ export default [
       resolve(),
       commonjs(),
       terser(),
-      babel({ babelHelpers: 'bundled', configFile: './babel.config.js' }),
+      // babel({ babelHelpers: 'bundled', configFile: './babel.config.js' }),
     ],
     external: ['react', 'react-dom', 'react-native'],
   }),

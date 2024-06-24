@@ -79,6 +79,8 @@ android {
 repositories {
   mavenCentral()
   google()
+  maven { url 'https://maven.fpregistry.io/releases' }
+  maven { url 'https://jitpack.io' }
 }
 
 

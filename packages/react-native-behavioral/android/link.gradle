@@ -1,0 +1,2 @@
+include ':fingerprintjs'
+project(':fingerprintjs').projectDir = new File('../../../packages/react-native-behavioral/node_modules/@fingerprintjs/fingerprintjs-pro-react-native/android')

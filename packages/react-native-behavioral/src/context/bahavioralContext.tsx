@@ -6,7 +6,10 @@ import React, {
 } from 'react';
 import { ConfigurationManager } from '@mefjus/core';
 import { HardwareCollector } from '../collectors/HardwareCollector';
-import { FingerprintJsProProvider } from '@fingerprintjs/fingerprintjs-pro-react-native';
+import {
+  FingerprintJsProProvider,
+  useVisitorData,
+} from '@fingerprintjs/fingerprintjs-pro-react-native';
 
 export interface BehavioralContextProps {
   initialize: (userId: string) => void;
@@ -35,8 +38,16 @@ export const BehavioralProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
       }}
     >
       <FingerprintJsProProvider apiKey="test">
+        {/* <Test /> */}
         {children}
       </FingerprintJsProProvider>
     </BehavioralContext.Provider>
   );
 };
+
+export const useV = useVisitorData;
+
+// const Test: FC = () => {
+//   const { error } = useVisitorData();
+//   return <Text>error: {error?.message}</Text>;
+// };

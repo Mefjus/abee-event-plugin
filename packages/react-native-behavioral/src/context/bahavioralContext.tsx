@@ -21,7 +21,10 @@ export const BehavioralContext = createContext<BehavioralContextProps>({
   debug: 'none',
 });
 
-export const BehavioralProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
+export const BehavioralProvider: FC<PropsWithChildren<{ apiKey: string }>> = ({
+  children,
+  apiKey,
+}) => {
   const [debug, setDebug] = useState('none');
 
   const initialize: BehavioralContextProps['initialize'] = (userId) => {
@@ -37,8 +40,7 @@ export const BehavioralProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
         debug,
       }}
     >
-      <FingerprintJsProProvider apiKey="test">
-        {/* <Test /> */}
+      <FingerprintJsProProvider apiKey={apiKey} region="eu">
         {children}
       </FingerprintJsProProvider>
     </BehavioralContext.Provider>
@@ -46,8 +48,3 @@ export const BehavioralProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
 };
 
 export const useV = useVisitorData;
-
-// const Test: FC = () => {
-//   const { error } = useVisitorData();
-//   return <Text>error: {error?.message}</Text>;
-// };

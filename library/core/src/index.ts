@@ -4,5 +4,6 @@ const add = (a: number, b: number): number => {
 
 export { add };
 export * from "./event";
+export * from "./logger";
 export * from "./configurationManager";
 export * from "./collectors/hardwareBaseCollector";

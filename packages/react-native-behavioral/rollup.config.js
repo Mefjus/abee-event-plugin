@@ -11,7 +11,7 @@ const packageJson = require('./package.json');
 
 export default [
   defineConfig({
-    input: ['src/index.tsx'],
+    input: ['src/index.ts'],
     output: [
       {
         file: `${packageJson.main}.js`,
@@ -29,15 +29,22 @@ export default [
     plugins: [
       peerDepsExternal(),
       typescript({ tsconfig: './tsconfig.json' }),
-      resolve(),
+      resolve({
+        extensions: ['.ts', '.tsx'],
+      }),
       commonjs(),
       terser(),
       // babel({ babelHelpers: 'bundled', configFile: './babel.config.js' }),
     ],
-    external: ['react', 'react-dom', 'react-native'],
+    external: [
+      'react',
+      'react-dom',
+      'react-native',
+      'react-native-device-info',
+    ],
   }),
   defineConfig({
-    input: 'src/index.tsx',
+    input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'es', sourcemap: true }],
     plugins: [dts.default()],
     external: [/\.css$/],

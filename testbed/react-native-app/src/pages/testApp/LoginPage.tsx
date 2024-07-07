@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { LoginContext } from "../context/LoginContext";
 import { TextInput, Text, Button } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
+import { LoginContext } from "../../context/LoginContext";
 
 export const LoginPage = () => {
   const { logIn } = useContext(LoginContext);

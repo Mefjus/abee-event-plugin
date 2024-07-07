@@ -1,16 +1,30 @@
 export type EventBaseType<
   T extends string,
-  D extends Record<string, string>,
+  D extends Record<string, string | number>
 > = {
   type: T;
   data: D;
 };
 
-export type DeviceNameEvent = EventBaseType<
-  "deviceName",
+export type HardwareTextType = EventBaseType<
+  | "deviceName"
+  | "macAddress"
+  | "model"
+  | "manufacturer"
+  | "brand"
+  | "serialNumber",
   {
-    name: string;
+    text: string;
   }
 >;
 
-export type EventType = DeviceNameEvent;
+export type HardwareNumberType = EventBaseType<
+  "batteryLevel" | "freeDiskStorage" | "totalDiskCapacity" | "totalMemory",
+  {
+    num: number;
+  }
+>;
+
+export type HardwareType = HardwareTextType | HardwareNumberType;
+
+export type EventType = HardwareType;

@@ -1,2 +1,5 @@
 include ':fingerprintjs'
 project(':fingerprintjs').projectDir = new File('../node_modules/@fingerprintjs/fingerprintjs-pro-react-native/android')
+
+include ':deviceInfo'
+project(':deviceInfo').projectDir = new File('../node_modules/react-native-device-info/android')

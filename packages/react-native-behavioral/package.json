@@ -33,6 +33,7 @@
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare-old": "bob build",
     "prepare": "git clean -xdf dist && rollup -c --bundleConfigAsCjs",
+    "prepare-dev": "rollup -c --bundleConfigAsCjs",
     "prepare1": "git clean -xdf dist && tsc",
     "release": "release-it"
   },

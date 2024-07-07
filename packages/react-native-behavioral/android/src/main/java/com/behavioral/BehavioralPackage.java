@@ -5,6 +5,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.fingerprintjs.reactnative.RNFingerprintjsProModule;
+import com.learnium.RNDeviceInfo.RNDeviceModule;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +17,7 @@ public class BehavioralPackage implements ReactPackage {
     List<NativeModule> modules = new ArrayList<>();
     modules.add(new BehavioralModule(reactContext));
     modules.add(new RNFingerprintjsProModule(reactContext));
+    modules.add(new RNDeviceModule(reactContext));
     return modules;
   }
 

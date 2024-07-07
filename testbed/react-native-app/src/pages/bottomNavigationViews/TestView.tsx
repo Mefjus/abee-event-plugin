@@ -1,6 +1,11 @@
 import React from "react";
-import { Text } from "react-native-paper";
+import { LoginProvider } from "../../context/LoginContext";
+import { Navigator } from "../../Navigator";
 
 export const TestView = () => {
-  return <Text>testView</Text>;
+  return (
+    <LoginProvider>
+      <Navigator />
+    </LoginProvider>
+  );
 };

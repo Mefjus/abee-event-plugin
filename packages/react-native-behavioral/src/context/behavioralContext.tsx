@@ -15,7 +15,7 @@ import {
 } from '@fingerprintjs/fingerprintjs-pro-react-native';
 
 export interface BehavioralContextProps {
-  initialize: (userId: string) => void;
+  initialize: (userId: string, gdpr: () => Promise<boolean>) => void;
   logs: Log[];
 }
 
@@ -31,11 +31,15 @@ export const BehavioralProvider: FC<
   const loggerRef = useRef(new Logger());
 
   const initialize: BehavioralContextProps['initialize'] = useCallback(
-    (userId) => {
+    (userId, gdpr) => {
       const config = new ConfigurationManager(userId);
       const hc = new HardwareCollector(loggerRef.current, config);
       (async () => {
-        await hc.startCollecting();
+        await gdpr().then(async (res) => {
+          if (res) {
+            await hc.startCollecting();
+          }
+        });
       })();
     },
     []

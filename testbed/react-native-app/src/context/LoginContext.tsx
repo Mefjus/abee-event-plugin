@@ -22,7 +22,10 @@ export const LoginProvider: FC<PropsWithChildren> = ({ children }) => {
       value={{
         isLogin: !!userName,
         logIn: (userName) => {
-          setUserName(userName), initialize(userName);
+          setUserName(userName),
+            initialize(userName, () => {
+              return Promise.resolve(true);
+            });
         },
         logOut: () => setUserName(undefined),
         userName: userName ?? "",
